@@ -1,0 +1,116 @@
+[
+    {
+        "id": "c6e21ffd.bd838",
+        "type": "tab",
+        "label": "n3-parser"
+    },
+    {
+        "id": "37cd9b03.e24e74",
+        "type": "n3-parser",
+        "z": "c6e21ffd.bd838",
+        "name": "",
+        "x": 491,
+        "y": 126,
+        "wires": [
+            [
+                "78f4b339.5d1e1c"
+            ]
+        ]
+    },
+    {
+        "id": "26a3cea0.83d372",
+        "type": "inject",
+        "z": "c6e21ffd.bd838",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 121,
+        "y": 74,
+        "wires": [
+            [
+                "b767030a.b51e3"
+            ]
+        ]
+    },
+    {
+        "id": "b767030a.b51e3",
+        "type": "template",
+        "z": "c6e21ffd.bd838",
+        "name": "n3",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "@prefix c: <http://exa#>.\n@prefix c1: <http://exa22#>.\n\nc:Tom a c:Cat.\nc:Jerry a c:Mouse;\n    c:smarterThan c:Tom.\nc1:Jerry2 a c1:Mouse2;\n    c:smarterThan \"test\"@en.",
+        "x": 296,
+        "y": 75,
+        "wires": [
+            [
+                "37cd9b03.e24e74"
+            ]
+        ]
+    },
+    {
+        "id": "78f4b339.5d1e1c",
+        "type": "debug",
+        "z": "c6e21ffd.bd838",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "false",
+        "x": 700,
+        "y": 125,
+        "wires": []
+    },
+    {
+        "id": "a4e76db6.ffc58",
+        "type": "inject",
+        "z": "c6e21ffd.bd838",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "x": 114,
+        "y": 171,
+        "wires": [
+            [
+                "c71632ad.d496f"
+            ]
+        ]
+    },
+    {
+        "id": "c71632ad.d496f",
+        "type": "template",
+        "z": "c6e21ffd.bd838",
+        "name": "n-triples",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> \"That Seventies Show\"^^<http://www.w3.org/2001/XMLSchema#string> .\n<http://example.org/show/218> <http://www.w3.org/2000/01/rdf-schema#label> \"That Seventies Show\" .\n<http://example.org/show/218> <http://example.org/show/localName> \"That Seventies Show\"@en . \n<http://example.org/show/218> <http://example.org/show/localName> \"Cette Série des Années Septante\"@fr-be .\n<http://example.org/#spiderman> <http://example.org/text> \"This is a multi-line\\nliteral with many quotes (\\\"\\\"\\\"\\\"\\\")\\nand two apostrophes ('').\" .\n<http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/atomicNumber> \"2\"^^<http://www.w3.org/2001/XMLSchema#integer> . \n<http://en.wikipedia.org/wiki/Helium> <http://example.org/elements/specificGravity> \"1.663E-4\"^^<http://www.w3.org/2001/XMLSchema#double> .",
+        "x": 299,
+        "y": 172,
+        "wires": [
+            [
+                "37cd9b03.e24e74"
+            ]
+        ]
+    },
+    {
+        "id": "edca2f8b.5642e",
+        "type": "comment",
+        "z": "c6e21ffd.bd838",
+        "name": "nodes created from N3 npm package",
+        "info": "https://www.npmjs.com/package/n3\n\nthanks to Ruben",
+        "x": 582,
+        "y": 27,
+        "wires": []
+    }
+]
